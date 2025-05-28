@@ -1,2 +1,2 @@
-# Lethal_company_prcing.github.io
+# Lethal_company_pricing.github.io
 everything is evaluated in lethal companies
