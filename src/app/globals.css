@@ -1,0 +1,260 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #0B0B0B;
+  --background-secondary: #111111;
+  --foreground: #E6E6E6;
+  --accent: #DC2626;
+  --panel: #1A1A1A;
+  --neon-green: #39FF14;
+  --danger: #B30000;
+  --border: #333333;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-panel: var(--panel);
+  --color-neon-green: var(--neon-green);
+  --color-danger: var(--danger);
+  --color-border: var(--border);
+  --font-terminal: 'VT323', monospace;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono), monospace;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Terminal-style scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+  border: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border: 1px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--danger);
+}
+
+/* Terminal window styling */
+.terminal-window {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-window::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(57, 255, 20, 0.03) 2px,
+    rgba(57, 255, 20, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Flicker animation */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes terminal-flicker {
+  0%, 98%, 100% { opacity: 1; }
+  99% { opacity: 0.98; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px var(--accent);
+  }
+}
+
+@keyframes danger-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--danger), 0 0 10px var(--danger);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--danger), 0 0 20px var(--danger), 0 0 30px var(--danger);
+  }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.flicker {
+  animation: flicker 0.15s infinite linear;
+}
+
+.terminal-flicker {
+  animation: terminal-flicker 4s infinite;
+}
+
+.glow {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.danger-glow {
+  animation: danger-pulse 1.5s ease-in-out infinite;
+}
+
+/* Terminal text styling */
+.terminal-text {
+  font-family: var(--font-terminal);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Scan lines overlay */
+.scan-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(57, 255, 20, 0.03) 2px,
+    rgba(57, 255, 20, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Terminal button styling */
+.terminal-button {
+  background: var(--panel);
+  border: 2px solid var(--accent);
+  color: var(--foreground);
+  font-family: var(--font-terminal);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.terminal-button:hover {
+  background: var(--accent);
+  color: var(--background);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+.terminal-button:active {
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+/* Terminal input styling */
+.terminal-input {
+  background: var(--background);
+  border: 2px solid var(--border);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.terminal-input:focus {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+/* Status indicators */
+.status-active {
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green);
+}
+
+.status-warning {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent);
+}
+
+.status-danger {
+  color: var(--danger);
+  text-shadow: 0 0 10px var(--danger);
+}
+
+/* Terminal grid */
+.terminal-grid {
+  display: grid;
+  gap: 2px;
+  background: var(--border);
+  padding: 2px;
+}
+
+/* Retro CRT effect */
+.crt-screen {
+  background: var(--background);
+  border: 4px solid var(--panel);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-cursor {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--neon-green); }
+}
+
+.typing-text {
+  overflow: hidden;
+  border-right: 3px solid var(--neon-green);
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-cursor 0.75s step-end infinite;
+}
