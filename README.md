@@ -1,4 +1,4 @@
-# 🎮 Lethal Copy Calculator
+# Lethal Copy Calculator
 
 **Transform real-world prices into Lethal Company game copies!**
 
@@ -6,21 +6,11 @@ Ever wondered how many copies of Lethal Company you could buy instead of that ex
 
 ![Lethal Copy Calculator](https://img.shields.io/badge/Status-Active-brightgreen) ![Next.js](https://img.shields.io/badge/Next.js-15.3.2-black) ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-cyan)
 
-## 🚀 Live Demo
+## Screenshots
 
-Visit the live application: [Lethal Copy Calculator](https://lethal-company-pricing.github.io)
+![image](https://github.com/user-attachments/assets/31efe12f-cc1a-49db-be7d-7338c83c3d64)
 
-## 📸 Screenshots
-
-### Main Converter Interface
-
-![Main Interface](https://via.placeholder.com/800x400/0B0B0B/39FF14?text=Lethal+Copy+Calculator+Interface)
-
-### Price Conversion Results
-
-![Results Display](https://via.placeholder.com/800x400/0B0B0B/DC2626?text=Product+Price+Conversion+Results)
-
-## ✨ Features
+## Features
 
 - **Multi-Retailer Support**: Scrapes prices from Amazon, eBay, Walmart, Target, and Best Buy
 - **Real-Time Price Extraction**: Uses advanced web scraping with multiple fallback selectors
