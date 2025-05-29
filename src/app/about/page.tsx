@@ -198,7 +198,7 @@ export default function About() {
                 THE COMPANY
               </div>
               <div className="font-mono text-[#E6E6E6] text-sm mt-2">
-                "WE OWN ARNAV"
+                &ldquo;WE OWN ARNAV&rdquo;
               </div>
             </div>
           </motion.div>

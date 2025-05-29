@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import PriceConverter from "../components/PriceConverter";
@@ -190,7 +190,8 @@ const MoneyRunner = () => {
                 <div className="text-6xl mb-6 animate-bounce">🎊🎉✨</div>
                 <div className="space-y-4">
                   <p className="text-[#DC2626] font-mono text-xl font-bold">
-                    ACHIEVEMENT UNLOCKED: "Professional Money Avoider"
+                    ACHIEVEMENT UNLOCKED: &ldquo;Professional Money
+                    Avoider&rdquo;
                   </p>
                   <p className="text-[#666] font-mono text-sm">
                     Your friend would be so proud... or maybe concerned.
